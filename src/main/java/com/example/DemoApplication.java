@@ -1,15 +1,17 @@
-package com.example.demo;
+package com.example;
 
-import com.example.dao.NoteDaoService;
 import com.example.service.NoteCrudService;
 import com.example.service.NoteService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.example.controller.*;
 
 @SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+
 		Note note = new Note("Test", "Arthur");
 		NoteCrudService service = new NoteService();
 
@@ -18,7 +20,7 @@ public class DemoApplication {
 
 		System.out.println(service.listAll());
 
-		service.deleteById(tmp.getId());
+		//service.deleteById(tmp.getId());
 
 		System.out.println(service.getById(note.getId()));
 

@@ -2,7 +2,7 @@ package com.example.service;
 
 import com.example.dao.NoteDaoService;
 import com.example.dao.NoteDaoServiceImp;
-import com.example.demo.Note;
+import com.example.Note;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
