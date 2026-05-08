@@ -1,7 +1,7 @@
 package com.example.dao;
 
 import com.example.Database;
-import com.example.demo.Note;
+import com.example.Note;
 
 import java.util.List;
 import java.util.NoSuchElementException;

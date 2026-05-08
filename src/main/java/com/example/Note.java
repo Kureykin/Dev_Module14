@@ -1,10 +1,11 @@
-package com.example.demo;
+package com.example;
 
-import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Random;
 
+@Setter
 @Getter
 public class Note {
     private long id;
@@ -14,16 +15,6 @@ public class Note {
     public Note(String title, String content){
         this.content = content;
         this.title = title;
-    }
-
-    public long getId(){
-        return id;
-    }
-    public String getContent(){
-        return content;
-    }
-    public String getTitle() {
-        return title;
     }
 
     public void titleUpdate(String title) {

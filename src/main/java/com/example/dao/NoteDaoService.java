@@ -1,6 +1,6 @@
 package com.example.dao;
 
-import com.example.demo.Note;
+import com.example.Note;
 
 import java.util.List;
 
