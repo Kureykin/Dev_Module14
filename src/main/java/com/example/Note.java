@@ -1,5 +1,6 @@
 package com.example;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,9 +8,14 @@ import java.util.Random;
 
 @Setter
 @Getter
+@Entity
 public class Note {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "content")
     private String content;
 
     public Note(String title, String content){

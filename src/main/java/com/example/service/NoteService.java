@@ -3,37 +3,41 @@ package com.example.service;
 import com.example.dao.NoteDaoService;
 import com.example.dao.NoteDaoServiceImp;
 import com.example.Note;
+import com.example.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NoteService implements NoteCrudService {
-    NoteDaoService service = new NoteDaoServiceImp();
+    private NoteDaoService service = new NoteDaoServiceImp();
+    private NoteRepository repo;
+
 
 
     @Override
     public List<Note> listAll() {
-        return service.listAll();
+        return repo.findAll();
     }
 
     @Override
     public Note add(Note note) {
-        return service.add(note);
+        return repo.save(note);
     }
 
     @Override
     public void deleteById(long id) {
-        service.deleteById(id);
+        repo.deleteById(id);
     }
 
     @Override
-    public void update(Note note) {
-        service.update(note);
+    public void update(Note note){
+        repo.save(note);
     }
 
     @Override
     public Note getById(long id) {
-        return service.getById(id);
+        return repo.getById(id);
     }
 }
