@@ -1,18 +1,15 @@
 package com.example.service;
 
-import com.example.dao.NoteDaoService;
-import com.example.dao.NoteDaoServiceImp;
 import com.example.Note;
 import com.example.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class NoteService implements NoteCrudService {
-    private NoteDaoService service = new NoteDaoServiceImp();
     @Autowired
     private NoteRepository repo;
 

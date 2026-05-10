@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.Database;
 import com.example.Note;
 import com.example.service.NoteCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
