@@ -1,7 +1,5 @@
 package com.example;
 
-import com.example.demo.Note;
-
 import java.util.ArrayList;
 import java.util.List;
 

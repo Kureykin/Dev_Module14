@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+   <th:block th:each = "note : ${notes}">
+       <h1>Title: <span th:text = "${note.getTitle}"></span></h1>
+
+       <p><span th:text = "${note.getContent}"></span></p>
+
+       <form action="delete" method="post">
+           <input type="hidden" name = "id" th:value = "${note.getId}" readonly>
+           <button type="submit">Delete</button>
+       </form>
+       <a th:href="@{edit?id={id}(id=${note.getId})}" methods="get">
+           <button>Edit</button>
+       </a>
+   </th:block>
+</body>
+</html>

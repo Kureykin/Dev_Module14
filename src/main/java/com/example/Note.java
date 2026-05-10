@@ -1,29 +1,28 @@
-package com.example.demo;
+package com.example;
 
-import lombok.Data;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Random;
 
+@Setter
 @Getter
+@NoArgsConstructor
+@Entity
 public class Note {
+    @Id
     private long id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "content")
     private String content;
 
     public Note(String title, String content){
+        generateId();
         this.content = content;
         this.title = title;
-    }
-
-    public long getId(){
-        return id;
-    }
-    public String getContent(){
-        return content;
-    }
-    public String getTitle() {
-        return title;
     }
 
     public void titleUpdate(String title) {
