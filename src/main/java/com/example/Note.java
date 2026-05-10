@@ -2,16 +2,17 @@ package com.example;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Random;
 
 @Setter
 @Getter
+@NoArgsConstructor
 @Entity
 public class Note {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "title")
     private String title;
@@ -19,6 +20,7 @@ public class Note {
     private String content;
 
     public Note(String title, String content){
+        generateId();
         this.content = content;
         this.title = title;
     }

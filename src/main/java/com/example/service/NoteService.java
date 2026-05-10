@@ -4,6 +4,7 @@ import com.example.dao.NoteDaoService;
 import com.example.dao.NoteDaoServiceImp;
 import com.example.Note;
 import com.example.repository.NoteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,12 @@ import java.util.Optional;
 @Service
 public class NoteService implements NoteCrudService {
     private NoteDaoService service = new NoteDaoServiceImp();
+    @Autowired
     private NoteRepository repo;
 
-
+    public NoteService(NoteRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
     public List<Note> listAll() {
@@ -38,6 +42,6 @@ public class NoteService implements NoteCrudService {
 
     @Override
     public Note getById(long id) {
-        return repo.getById(id);
+        return repo.findById(id).get();
     }
 }
