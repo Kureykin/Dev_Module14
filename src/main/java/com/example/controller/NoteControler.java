@@ -11,13 +11,26 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/note")
+@RequestMapping(value = "/notes")
 public class NoteControler {
     @Autowired
     private NoteCrudService noteService;
 
+    @GetMapping("/newNote")
+    public ModelAndView createPage() {
+        ModelAndView result = new ModelAndView("note/create");
+        return result;
+    }
+    @PostMapping("/newNote")
+    public ModelAndView createNote(@ModelAttribute Note note) {
+        List<Note> noteList = noteService.listAll();
+        noteService.add(new Note(note.getTitle(), note.getContent()));
 
-    @GetMapping("/list")
+        var model = new ModelMap("notes", noteList);
+        return new ModelAndView("redirect:/notes/", model);
+    }
+
+    @GetMapping("/")
     public ModelAndView getNoteList() {
         List<Note> noteList = noteService.listAll();
         ModelAndView result = new ModelAndView("note/list");
@@ -25,16 +38,16 @@ public class NoteControler {
         return result;
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/note")
     public ModelAndView deleteNote(@ModelAttribute(name = "id") long id) {
         List<Note> noteList = noteService.listAll();
         noteService.deleteById(id);
 
         ModelMap model = new ModelMap("notes", noteList);
-        return new ModelAndView("redirect:list", model);
+        return new ModelAndView("redirect:/notes/", model);
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/note")
     public ModelAndView getEditPage(@RequestParam(name = "id") long id) {
         List<Note> noteList = noteService.listAll();
         ModelAndView result = new ModelAndView("note/edit");
@@ -48,12 +61,12 @@ public class NoteControler {
         return result;
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/updatedNote")
     public ModelAndView editNote(@ModelAttribute Note newNote) {
         List<Note> noteList = noteService.listAll();
         noteService.update(newNote);
 
         ModelMap model = new ModelMap("notes", noteList);
-        return new ModelAndView("redirect:list", model);
+        return new ModelAndView("redirect:/notes/", model);
     }
 }

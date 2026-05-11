@@ -10,11 +10,11 @@
 
        <p><span th:text = "${note.getContent}"></span></p>
 
-       <form action="delete" method="post">
+       <form action="note" method="post">
            <input type="hidden" name = "id" th:value = "${note.getId}" readonly>
            <button type="submit">Delete</button>
        </form>
-       <a th:href="@{edit?id={id}(id=${note.getId})}" methods="get">
+       <a th:href="@{note?id={id}(id=${note.getId})}" methods="get">
            <button>Edit</button>
        </a>
    </th:block>

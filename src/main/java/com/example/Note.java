@@ -13,7 +13,7 @@ import java.util.Random;
 @Entity
 public class Note {
     @Id
-    private long id;
+    private Long id;
     @Column(name = "title")
     private String title;
     @Column(name = "content")
